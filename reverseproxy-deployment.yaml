@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: reverseproxy
-          image: daomtthuan/reverseproxy:v3
+          image: daomtthuan/reverseproxy:dev
           ports:
             - containerPort: 8080
           resources:

@@ -151,7 +151,7 @@ Next, re-apply configmap and re-deploy to the k8s cluster.
 ```bash
 kubectl apply -f env-configmap.yaml
 # Rolling update "frontend" containers of "frontend" deployment, updating the image
-kubectl set image deployment frontend frontend=sudkul/udagram-frontend:v3
+kubectl set image deployment frontend frontend=sudkul/udagram-frontend:dev
 # Do the same for other three deployments
 ```
 

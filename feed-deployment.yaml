@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: api-feed
-          image: daomtthuan/udagram-api-feed:v3
+          image: daomtthuan/udagram-api-feed:dev
           imagePullPolicy: Always
           resources:
             requests:
