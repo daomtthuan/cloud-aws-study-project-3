@@ -1,4 +1,4 @@
-# Part 3 - Set up Travis continuous integration pipeline
+# Part 3 - Set up Circleci continuous integration pipeline
 
 Prior to setting up a multi-container application in Kubernetes, you will need to set up a CI pipeline to build and push our application code as Docker images in DockerHub.
 
@@ -15,21 +15,21 @@ Log in to https://hub.docker.com/ and create four public repositories - each rep
 
 > Note: The names of the repositoriesare exactly the same as the `image name` specified in the _docker-compose-build.yaml_ file
 
-### Set up Travis CI Pipeline
+### Set up Circle CI Pipeline
 
-Use Travis CI pipeline to build and push images to your DockerHub registry.
+Use Circle CI pipeline to build and push images to your DockerHub registry.
 
-1.  Create an account on https://travis-ci.com/ (not https://travis-ci.org/). It is recommended that you sign in using your Github account.
+1.  Create an account on https://circleci.com/. It is recommended that you sign in using your Github account.
 
-2.  Integrate Github with Travis: Activate your GitHub repository with whom you want to set up the CI pipeline.
+2.  Integrate Github with Circleci: Activate your GitHub repository with whom you want to set up the CI pipeline.
 
-3.  Set up your Dockerhub username and password in the Travis repository's settings, so that they can be used inside of `.travis.yml` file while pushing images to the Dockerhub.
+3.  Set up your Dockerhub username and password in the Circleci repository's settings, so that they can be used inside of `.circleci\config.yml` file while pushing images to the Dockerhub.
 
-4.  Add a `.travis.yml` configuration file to the project directory locally.
+4.  Add a `.circleci\config.yml` configuration file to the project directory locally.
 
-        In addition to the mandatory sections, your Travis file should automatically read the Dockerfiles, build images, and push images to DockerHub. For build and push, you can use either `docker-compose` or individual `docker build` commands as shown below.
+        In addition to the mandatory sections, your Circleci file should automatically read the Dockerfiles, build images, and push images to DockerHub. For build and push, you can use either `docker-compose` or individual `docker build` commands as shown below.
         ```bash
-        # Assuming the .travis.yml file is in the project directory, and there is a separate sub-directory for each service
+        # Assuming the .circleci\config.yml file is in the project directory, and there is a separate sub-directory for each service
         # Use either `docker-compose` or individual `docker build` commands
         # Build
           - docker build -t udagram-api-feed ./udagram-api-feed
@@ -42,7 +42,7 @@ Use Travis CI pipeline to build and push images to your DockerHub registry.
         # Do similar for other three images```
         ```bash
         # Push
-        # Assuming DOCKER_PASSWORD and DOCKER_USERNAME are set in the Travis repository settings
+        # Assuming DOCKER_PASSWORD and DOCKER_USERNAME are set in the Circleci repository settings
           - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
           - docker push sudkul/udagram-api-feed:v1
         # Do similar for other three images
@@ -50,7 +50,7 @@ Use Travis CI pipeline to build and push images to your DockerHub registry.
 
     > **Tip**: Use different tags each time you push images to the Dockerhub.
 
-5.  Trigger your build by pushing your changes to the Github repository. All of these steps mentioned in the `.travis.yml` file will be executed on the Travis worker node. It may take upto 15-20 minutes to build and push all four images.
+5.  Trigger your build by pushing your changes to the Github repository. All of these steps mentioned in the `./circleci\config.yml` file will be executed on the Circleci worker node. It may take upto 15-20 minutes to build and push all four images.
 
 6.  Verify if the newly pushed images are now available in your Dockerhub account.
 
@@ -59,11 +59,11 @@ Use Travis CI pipeline to build and push images to your DockerHub registry.
 So that we can verify your project’s pipeline is set up properly, please include the screenshots of the following:
 
 1. DockerHub showing images that you have pushed
-2. Travis CI showing a successful build job
+2. Circle CI showing a successful build job
 
 ### Troubleshooting
 
-If you are not able to get through the Travis pipeline, and still want to push your local images to the Dockerhub (only for testing purposes), you can attempt the manual method.
+If you are not able to get through the Circleci pipeline, and still want to push your local images to the Dockerhub (only for testing purposes), you can attempt the manual method.
 
 Note that this is only for the troubleshooting purposes, such as verifying the deployment to the Kubernetes cluster.
 

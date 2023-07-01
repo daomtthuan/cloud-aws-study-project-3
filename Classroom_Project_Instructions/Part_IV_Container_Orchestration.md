@@ -143,9 +143,9 @@ Once you have the External IP of your front end and reverseproxy deployment, Cha
 
 - _udagram-frontend/src/environments/environment.prod.ts_ - Replace 'http://localhost:8080/api/v0' string.
 
-- Retag in the `.travis.yaml` (say use v3, v4, v5, ...) as well as deployment YAML files
+- Retag in the `.circleci/config.yaml` (say use v3, v4, v5, ...) as well as deployment YAML files
 
-Then, push your changes to the Github repo. Travis will automatically build and re-push images to your Dockerhub.
+Then, push your changes to the Github repo. Circleci will automatically build and re-push images to your Dockerhub.
 Next, re-apply configmap and re-deploy to the k8s cluster.
 
 ```bash

@@ -17,7 +17,7 @@ In this project you will:
 
 - Refactor the monolith application to microservices
 - Set up each microservice to be run in its own Docker container
-- Set up a Travis CI pipeline to push images to DockerHub
+- Set up a Circle CI pipeline to push images to DockerHub
 - Deploy the DockerHub images to the Kubernetes cluster
 
 # Local Prerequisites

@@ -27,7 +27,7 @@ The project will be submitted as a link to a GitHub repo or a zip file and shoul
 ### Required Screenshots
 
 - Docker images in your repository in DockerHub
-- TravisCI build pipeline showing successful build jobs
+- Circleci build pipeline showing successful build jobs
 - Kubernetes `kubectl get pods` output
 - Kubernetes `kubectl describe services` output
 - Kubernetes `kubectl describe hpa` output
