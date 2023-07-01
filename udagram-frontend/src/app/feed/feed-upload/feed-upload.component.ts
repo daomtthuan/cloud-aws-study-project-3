@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { FeedProviderService } from '../services/feed.provider.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { LoadingController, ModalController } from '@ionic/angular';
 
+import { FeedProviderService } from '../services/feed.provider.service';
 
 @Component({
   selector: 'app-feed-upload',
@@ -20,17 +19,17 @@ export class FeedUploadComponent implements OnInit {
     private feed: FeedProviderService,
     private formBuilder: FormBuilder,
     private loadingController: LoadingController,
-    private modalController: ModalController
-  ) { }
+    private modalController: ModalController,
+  ) {}
 
   ngOnInit() {
     this.uploadForm = this.formBuilder.group({
-      caption: new FormControl('', Validators.required)
+      caption: new FormControl('', Validators.required),
     });
   }
 
   setPreviewDataUrl(file: Blob) {
-    const reader  = new FileReader();
+    const reader = new FileReader();
     reader.onloadend = () => {
       this.previewDataUrl = reader.result;
     };
@@ -46,19 +45,19 @@ export class FeedUploadComponent implements OnInit {
     }
     this.file = file[0];
     this.setPreviewDataUrl(this.file);
-
   }
 
   onSubmit($event) {
     $event.preventDefault();
     this.loadingController.create();
 
-    if (!this.uploadForm.valid || !this.file) { return; }
-    this.feed.uploadFeedItem(this.uploadForm.controls.caption.value, this.file)
-      .then((result) => {
-        this.modalController.dismiss();
-        this.loadingController.dismiss();
-      });
+    if (!this.uploadForm.valid || !this.file) {
+      return;
+    }
+    this.feed.uploadFeedItem(this.uploadForm.controls.caption.value, this.file).then((result) => {
+      this.modalController.dismiss();
+      this.loadingController.dismiss();
+    });
   }
 
   cancel() {
