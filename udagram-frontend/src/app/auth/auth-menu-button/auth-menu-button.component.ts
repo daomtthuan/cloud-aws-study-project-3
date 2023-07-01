@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ModalController } from '@ionic/angular';
+import { AuthMenuUserComponent } from './auth-menu-user/auth-menu-user.component';
 
+import { AuthService } from '../services/auth.service';
 import { AuthLoginComponent } from '../auth-login/auth-login.component';
 import { AuthRegisterComponent } from '../auth-register/auth-register.component';
-import { AuthService } from '../services/auth.service';
-import { AuthMenuUserComponent } from './auth-menu-user/auth-menu-user.component';
 
 @Component({
   selector: 'app-auth-menu-button',
@@ -13,7 +12,11 @@ import { AuthMenuUserComponent } from './auth-menu-user/auth-menu-user.component
   styleUrls: ['./auth-menu-button.component.scss'],
 })
 export class AuthMenuButtonComponent implements OnInit {
-  constructor(private auth: AuthService, public modalController: ModalController) {}
+
+  constructor(
+    private auth: AuthService,
+    public modalController: ModalController
+    ) {}
 
   async presentmodal(ev: any) {
     const modal = await this.modalController.create({
@@ -41,4 +44,5 @@ export class AuthMenuButtonComponent implements OnInit {
   }
 
   ngOnInit() {}
+
 }

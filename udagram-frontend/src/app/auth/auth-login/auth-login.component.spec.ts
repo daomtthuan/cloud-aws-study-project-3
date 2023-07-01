@@ -11,9 +11,10 @@ describe('AuthLoginPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule],
-      declarations: [AuthLoginComponent],
+      declarations: [ AuthLoginComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    }).compileComponents();
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {

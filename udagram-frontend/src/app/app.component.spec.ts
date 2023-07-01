@@ -1,14 +1,15 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { TestBed, async } from '@angular/core/testing';
 
+import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Platform } from '@ionic/angular';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+
   let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
 
   beforeEach(async(() => {
@@ -25,7 +26,7 @@ describe('AppComponent', () => {
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: Platform, useValue: platformSpy },
       ],
-      imports: [RouterTestingModule.withRoutes([])],
+      imports: [ RouterTestingModule.withRoutes([])],
     }).compileComponents();
   }));
 
@@ -76,4 +77,5 @@ describe('AppComponent', () => {
     const menubar = app.querySelectorAll('app-menubar');
     expect(menubar.length).toEqual(1);
   });
+
 });

@@ -9,9 +9,10 @@ describe('FeedUploadButtonPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FeedUploadButtonComponent],
+      declarations: [ FeedUploadButtonComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    }).compileComponents();
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {

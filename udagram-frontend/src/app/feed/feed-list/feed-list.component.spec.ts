@@ -1,9 +1,9 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { feedItemMocks } from '../models/feed-item.model';
-import { FeedProviderService } from '../services/feed.provider.service';
 import { FeedListComponent } from './feed-list.component';
+import { FeedProviderService } from '../services/feed.provider.service';
+import { feedItemMocks } from '../models/feed-item.model';
 
 describe('FeedListComponent', () => {
   let component: FeedListComponent;
@@ -12,9 +12,10 @@ describe('FeedListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FeedListComponent],
+      declarations: [ FeedListComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    }).compileComponents();
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {
