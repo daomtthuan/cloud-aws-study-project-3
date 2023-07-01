@@ -167,8 +167,8 @@ Check your deployed application at the External IP of your _publicfrontend_ serv
 kubectl get pods
 kubectl describe pod <pod-id>
 # An example:
-# kubectl logs backend-user-5667798847-knvqz
-# Error from server (BadRequest): container "backend-user" in pod "backend-user-5667798847-knvqz" is waiting to start: trying and failing to pull image
+# kubectl logs api-user-5667798847-knvqz
+# Error from server (BadRequest): container "api-user" in pod "api-user-5667798847-knvqz" is waiting to start: trying and failing to pull image
 ```
 
 In case of `ImagePullBackOff` or `ErrImagePull` or `CrashLoopBackOff`, review your deployment.yaml file(s) if they have the right image path.

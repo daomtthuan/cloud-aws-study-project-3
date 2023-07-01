@@ -111,10 +111,10 @@ error_log /dev/stdout debug;
 http {
     sendfile on;
     upstream user {
-        server backend-user:8080;
+        server api-user:8080;
     }
     upstream feed {
-        server backend-feed:8080;
+        server api-feed:8080;
     }
     proxy_set_header   Host $host;
     proxy_set_header   X-Real-IP $remote_addr;
@@ -133,7 +133,7 @@ http {
 }
 ```
 
-The Nginx container will expose 8080 port. The configuration file above, in the `server` section, it will route the _http://localhost:8080/api/v0/feed_ requests to the _backend-user:8080_ container. The same applies for the _http://localhost:8080/api/v0/users_ requests.
+The Nginx container will expose 8080 port. The configuration file above, in the `server` section, it will route the _http://localhost:8080/api/v0/feed_ requests to the api-user:8080* container. The same applies for the \_http://localhost:8080/api/v0/users* requests.
 
 ### Current Directory Structure
 
