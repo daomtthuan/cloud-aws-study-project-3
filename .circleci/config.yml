@@ -19,11 +19,11 @@ jobs:
           command: |
             # Build
               echo '_____________beginning build'
-              docker build -t udagram-frontend:dev ./udagram-frontend
+              docker build -t udagram-frontend:dev1 ./udagram-frontend
 
               # Tagging
               echo '_____________beginning tag'
-              docker tag udagram-frontend:dev daomtthuan/udagram-frontend:dev
+              docker tag udagram-frontend:dev1 daomtthuan/udagram-frontend:dev1
 
               echo 'DOCKER IMAGE LS____'
               docker image ls
@@ -37,4 +37,4 @@ jobs:
 
             # Pushing
             echo '_____________beginning push image'
-            docker push daomtthuan/udagram-frontend:dev
+            docker push daomtthuan/udagram-frontend:dev1
